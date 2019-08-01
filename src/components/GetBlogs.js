@@ -19,7 +19,7 @@ class GetBlogs extends Component{
       }
     
     getUsers(){
-        axios.get('https://v1mglih8ha.execute-api.eu-west-2.amazonaws.com/dev/traveller/user')
+        axios.get('http://localhost:8080/blogs/')
     
         .then(response =>{
           this.setState({users:response.data.users})

@@ -21,6 +21,7 @@ class App extends Component {
 
   componentWillMount() {
     this.getBlogs();
+    console.log(this.state.blogs)
   }
 
   filterBlogCountry = () =>{
@@ -35,11 +36,9 @@ class App extends Component {
 
 
   getBlogs() {
-    axios.get('https://v1mglih8ha.execute-api.eu-west-2.amazonaws.com/dev/traveller/blog')
+    axios.get('http://localhost:8080/blogs/')
       .then(response => {
-        let sortedBlogs = response.data.blogs;
-        sortedBlogs.sort((a, b) => parseFloat(b.blog_id) - parseFloat(a.blog_id));
-       this.setState({blogs:sortedBlogs})
+       this.setState({blogs:response.data._embedded.blogs})
        })
        .catch(function (error) {
        console.log(error);
@@ -87,7 +86,7 @@ class App extends Component {
       attractName = this.defaultValuesForForm(attractName)
       attractLink = this.defaultValuesForForm(attractLink)
       blogText =  this.checkSwears(blogText);
-      axios.post('https://v1mglih8ha.execute-api.eu-west-2.amazonaws.com/dev/traveller/blog',{
+      axios.post('http://localhost:8080/blogs/',{
       blog_text:blogText,      
       blog_country_name:blogCountryName,
       blog_city:blogCity,
@@ -113,7 +112,7 @@ class App extends Component {
   }
 
   deleteBlog = (blogId) => {
-    axios.delete(`https://v1mglih8ha.execute-api.eu-west-2.amazonaws.com/dev/traveller/blog/${blogId}`)
+    axios.delete(`http://localhost:8080/blogs/${blogId}`)
       .then(() => {
         if(this.state.filterOn){
           this.filterBlog(this.state.filteredCountry)
@@ -139,7 +138,7 @@ class App extends Component {
       alert("select  country");
     }else{
       blogText =  this.checkSwears(blogText);
-      axios.put('https://v1mglih8ha.execute-api.eu-west-2.amazonaws.com/dev/traveller/blog',{ 
+      axios.put('http://localhost:8080/blogs/',{ 
       blog_id:parseInt(blogId),
       blog_text:blogText,      
       blog_country_name:blogCountryName,
@@ -173,7 +172,7 @@ class App extends Component {
   }
 
   filterBlog = (country) =>{
-    axios.get(`https://v1mglih8ha.execute-api.eu-west-2.amazonaws.com/dev/traveller/blogbc/${country}`)
+    axios.get(`http://localhost:8080/blogs/${country}`)
     .then((response) => {
       let sortedBlogs = response.data.blogs;
       sortedBlogs.sort((a, b) => parseFloat(b.blog_id) - parseFloat(a.blog_id));
@@ -217,7 +216,7 @@ class App extends Component {
                     key={index}
                     blog_id={element.blog_id}
                     user_id={element.user_id}
-                    user_name={element.user_name}
+                    user_name={element.userName}
                     blog_country_name={element.blog_country_name}
                     blog_city={element.blog_city}
                     blog_text={element.blog_text}
@@ -236,16 +235,16 @@ class App extends Component {
               } else {
                 return<ShowBlogs key={index}
                           blog_id={element.blog_id}
-                          user_name={element.user_name}
-                          blog_country_name={element.blog_country_name}
-                          blog_city={element.blog_city}
-                          blog_text={element.blog_text}
-                          rest_name={element.rest_name}
-                          rest_link={element.rest_link}
-                          hotel_name={element.hotel_name}
-                          hotel_link={element.hotel_link}
-                          attract_name={element.attract_name}
-                          attract_link={element.attract_link}
+                          user_name={element.userName}
+                          blog_country_name={element.country}
+                          blog_city={element.city}
+                          blog_text={element.blogPost}
+                          rest_name={element.resteraunt}
+                          rest_link={element.resterauntLink}
+                          hotel_name={element.hotel}
+                          hotel_link={element.hotelLink}
+                          attract_name={element.attraction}
+                          attract_link={element.attractionLink}
                           deleteBlogFunction={this.deleteBlog}
                           modifyBlogFunction={this.modifyBlog}/>
                       }
