@@ -217,18 +217,15 @@ class App extends Component {
                     blog_id={element.blog_id}
                     user_id={element.user_id}
                     user_name={element.userName}
-                    blog_country_name={element.blog_country_name}
-                    blog_city={element.blog_city}
-                    blog_text={element.blog_text}
-                    rest_id={element.rest_id}
-                    rest_name={element.rest_name}
-                    rest_link={element.rest_link}
-                    hotel_id={element.hotel_id}
-                    hotel_name={element.hotel_name}
-                    hotel_link={element.hotel_link}
-                    attract_id={element.attract_id}
-                    attract_name={element.attract_name}
-                    attract_link={element.attract_link}
+                    blog_country_name={element.country}
+                    blog_city={element.city}
+                    blog_text={element.blogPost}
+                    rest_name={element.resteraunt}
+                    rest_link={element.resterauntLink}
+                    hotel_name={element.hotel}
+                    hotel_link={element.hotelLink}
+                    attract_name={element.attraction}
+                    attract_link={element.attractionLink}
                     saveChangeFunction={this.saveChanges}
                     discardChangeFunction={this.discardChanges}/>
                 }

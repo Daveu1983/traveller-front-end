@@ -6,8 +6,8 @@ const countryList = require('country-list');
 class EditBlogs extends Component{
 
 state = {
-    blog:{blog_id:0, blog_text:"", blog_country_name:"", blog_city:"", hotel_id:0, hotel_name:"",
-    hotel_link:"", rest_id:0, rest_name:"", rest_link:"", attract_id:0, attract_name:"", attract_link:""},
+    blog:{blog_id:0, blogPost:"", country:"", city:"", hotel:"", hotelLink:"", 
+    resteaunt:"", resterauntLink:"", attraction:"", attractionLink:""},
     users:[],
     countries:[]
 }
@@ -20,24 +20,20 @@ componentWillMount(){
 
     blogToEdit() {
         this.setState({
-            blog_id:this.props.blog_id,
-            blog_text:this.props.blog_text,
-            blog_country_name:this.props.blog_country_name,
-            blog_city:this.props.blog_city,
-            rest_id:this.props.rest_id,
-            rest_name:this.props.rest_name,
-            rest_link:this.props.rest_link,
-            hotel_id:this.props.hotel_id,
-            hotel_name:this.props.hotel_name,
-            hotel_link:this.props.hotel_link,
-            attract_id:this.props.attract_id,
-            attract_name:this.props.attract_name,
-            attract_link:this.props.attract_link
+            blogPost:this.props.blogPost,
+            country:this.props.country,
+            city:this.city,
+            resteraunt:this.props.resteraunt,
+            resterauntLink:this.props.resterauntLink,
+            hotel:this.props.hotel,
+            hotelLink:this.props.hotelLink,
+            attraction:this.props.attraction,
+            attractionLink:this.props.attractionLink
         })
     }
 
     getUsers(){
-        axios.get('https://v1mglih8ha.execute-api.eu-west-2.amazonaws.com/dev/traveller/user')
+        axios.get('http://localhost:8080/blogs/')
     
         .then(response =>{
           this.setState({users:response.data.users})
