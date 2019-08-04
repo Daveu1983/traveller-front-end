@@ -15,7 +15,6 @@ class GetBlogs extends Component{
     
     componentWillMount(){
         this.getUsers()
-        console.log(this.state.users)
         this.getCountries()
       }
     

@@ -111,7 +111,7 @@ class App extends Component {
   }
 
   deleteBlog = (blogId) => {
-    axios.delete(`http://localhost:8080/blogs/${blogId}`)
+    axios.delete(`${blogId}`)
       .then(() => {
         if(this.state.filterOn){
           this.filterBlog(this.state.filteredCountry)
@@ -230,7 +230,7 @@ class App extends Component {
                 }
               } else {
                 return<ShowBlogs key={index}
-                          blog_id={element.blog_id}
+                          blog_id={element._links.self.href}
                           user_name={element.userName}
                           blog_country_name={element.country}
                           blog_city={element.city}
