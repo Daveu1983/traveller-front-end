@@ -15,14 +15,15 @@ class GetBlogs extends Component{
     
     componentWillMount(){
         this.getUsers()
+        console.log(this.state.users)
         this.getCountries()
       }
     
     getUsers(){
-        axios.get('http://localhost:8080/blogs/')
+        axios.get('http://localhost:8080/users/')
     
         .then(response =>{
-          this.setState({users:response.data.users})
+          this.setState({users:response.data._embedded.users})
         })
         .catch(function (error) {
         console.log(error);
@@ -104,7 +105,7 @@ class GetBlogs extends Component{
                                     <option value="0">Select a traveller below</option>
                                         { 
                                             this.state.users.map((element, index)=>{
-                                                return <option key={index} value={element.user_id}>{element.user_name} 
+                                                return <option key={index} value={element.user_id}>{element.userName} 
                                                     </option>
                                             })
                                         }

@@ -33,10 +33,10 @@ componentWillMount(){
     }
 
     getUsers(){
-        axios.get('http://localhost:8080/blogs/')
+        axios.get('http://localhost:8080/users/')
     
         .then(response =>{
-          this.setState({users:response.data.users})
+          this.setState({users:response.data._embedded.users})
         })
         .catch(function (error) {
         console.log(error);

@@ -21,7 +21,6 @@ class App extends Component {
 
   componentWillMount() {
     this.getBlogs();
-    console.log(this.state.blogs)
   }
 
   filterBlogCountry = () =>{
