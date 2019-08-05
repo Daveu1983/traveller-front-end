@@ -44,8 +44,6 @@ class App extends Component {
        })
   }
 
-  
-
   checkSwears=(blogText) => {
     blogText = blogText.split(" ");
     blogText = blogText.map((word) =>{
@@ -94,7 +92,8 @@ class App extends Component {
       resteraunt:restName,
       resterauntLink:restLink,
       attraction:attractName,
-      attractionLink:attractLink  
+      attractionLink:attractLink,  
+      userName:userName
      })
     .then(() => {
       if(this.state.filterOn){
