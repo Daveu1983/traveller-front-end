@@ -132,25 +132,22 @@ class App extends Component {
     }
   }
 
-  saveChanges = (blogId, blogCountryName, blogCity, blogText, restId, restName, restLink, hotelId, hotelName, hotelLink, attractId,attractName, attractLink) =>{
+  saveChanges = (blogId, blogCountryName, blogCity, blogText, restName, restLink, hotelName, hotelLink, attractName, attractLink) =>{
     if ((blogCountryName === undefined)){
       alert("select  country");
     }else{
       blogText =  this.checkSwears(blogText);
-      axios.put('http://localhost:8080/blogs/',{ 
-      blog_id:parseInt(blogId),
-      blog_text:blogText,      
-      blog_country_name:blogCountryName,
-      blog_city:blogCity, 
-      rest_id:restId,
-      rest_name:restName,
-      rest_link:restLink,
-      hotel_id:hotelId,
-      hotel_name:hotelName,
-      hotel_link:hotelLink,
-      attract_id:attractId,
-      attract_name:attractName,
-      attract_link:attractLink
+      axios.put(`${blogId}`,{ 
+      blogId:blogId,
+      blogPost:blogText,      
+      country:blogCountryName,
+      city:blogCity, 
+      resteraunt:restName,
+      resterauntLink:restLink,
+      hotelName:hotelName,
+      hotelLink:hotelLink,
+      attraction:attractName,
+      attractionLink:attractLink
      })
     .then(() => {
       if(this.state.filterOn){

@@ -20,16 +20,16 @@ componentWillMount(){
 
     blogToEdit() {
         this.setState({
-            blogId:this.props.blogId,
-            blogPost:this.props.blogPost,
-            country:this.props.country,
-            city:this.city,
-            resteraunt:this.props.resteraunt,
-            resterauntLink:this.props.resterauntLink,
+            blogId:this.props.blog_id,
+            blogPost:this.props.blog_text,
+            country:this.props.blog_country_name,
+            city:this.blog_city,
+            resteraunt:this.props.rest,
+            resterauntLink:this.props.rest_link,
             hotel:this.props.hotel,
-            hotelLink:this.props.hotelLink,
-            attraction:this.props.attraction,
-            attractionLink:this.props.attractionLink
+            hotelLink:this.props.hotel_link,
+            attraction:this.props.attract,
+            attractionLink:this.props.attract_link
         })
     }
 
@@ -50,46 +50,46 @@ componentWillMount(){
     }  
     
     saveCountry = (event) =>{
-        this.setState({blog_country_name:event.target.value})
+        this.setState({country:event.target.value})
       }
 
     blogCityBoxChanged = (event) =>{
-    this.setState({blog_city: event.target.value})
+    this.setState({city: event.target.value})
         }
 
     blogPostBoxChanged = (event) =>{
-        this.setState({blog_text: event.target.value})
+        this.setState({blogPost: event.target.value})
         }
 
     hotelTextBoxChanged = (event) =>{
-        this.setState({hotel_name: event.target.value})
+        this.setState({hotel: event.target.value})
         }
 
     hotelLinkBoxChanged = (event) =>{
-        this.setState({hotel_link: event.target.value})
+        this.setState({hotelLink: event.target.value})
         }
     restTextBoxChanged = (event) =>{
-        this.setState({rest_name: event.target.value})
+        this.setState({resteraunt: event.target.value})
         }
 
     restLinkBoxChanged = (event) =>{
-        this.setState({rest_link: event.target.value})
+        this.setState({resterauntLink: event.target.value})
         }
 
     attractTextBoxChanged = (event) =>{
-        this.setState({attract_name: event.target.value})
+        this.setState({attraction: event.target.value})
         }
 
     attractLinkBoxChanged = (event) =>{
-        this.setState({attract_link: event.target.value})
+        this.setState({attractionLink: event.target.value})
         }
 
     saveChangeClicked = () => {
-        this.props.saveChangeFunction(this.state.blog_id, this.state.blog_country_name,
-                                   this.state.blog_city, this.state.blog_text, this.state.rest_id,
-                                   this.state.rest_name, this.state.rest_link, this.state.hotel_id,
-                                   this.state.hotel_name, this.state.hotel_link, this.state.attract_id,
-                                   this.state.attract_name, this.state.attract_link);
+        this.props.saveChangeFunction(this.state.blogId, this.state.country,
+                                   this.state.city, this.state.blogPost, this.state.resteraunt,
+                                   this.state.resterauntLink, this.state.hotel,
+                                   this.state.hotelLink, this.state.attraction,
+                                   this.state.attractionLink);
         } 
 
     discardChangeClicked = () =>{
