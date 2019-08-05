@@ -68,7 +68,7 @@ class App extends Component {
   } 
 
   addBlog = (userName, blogCountryName, blogCity, blogText, hotelName, hotelLink, restName, restLink, attractName, attractLink)=>{
-    if ((userName === undefined) || (userName === 0)){
+    if ((userName === undefined) || (userName === "0")){
       alert("select  user");
     }
     if ((blogCountryName === undefined) || (blogCountryName === "Select the blog country")) {

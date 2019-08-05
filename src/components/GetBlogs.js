@@ -6,7 +6,7 @@ const countryList = require('country-list');
 class GetBlogs extends Component{
 
     state = {
-        blog:{blog_text:"", blog_country_name:"", blog_city:"", user_id:0, hotel_name:"",
+        blog:{blog_text:"", blog_country_name:"", blog_city:"", userName:"", hotel_name:"",
               hotel_link:"", rest_name:"", rest_link:"", attract_name:"", attract_link:""},
         users:[],
         countries:[],
@@ -35,7 +35,7 @@ class GetBlogs extends Component{
     }  
 
     saveUser = (event) =>{
-        this.setState({user_id:event.target.value})
+        this.setState({userName:event.target.value})
       }
     
     saveCountry = (event) =>{
@@ -80,8 +80,8 @@ class GetBlogs extends Component{
                                    this.state.rest_name,this.state.rest_link,
                                    this.state.attract_name,this.state.attract_link);
         this.setState({showForm:false})
-        this.setState({blog_text:"", blog_country_name:"", blog_city:"", user_id:0, hotel_name:"",
-        hotel_link:"", rest_name:"", rest_link:"", attract_name:"", attract_link:""})
+        this.setState({blog:{blog_text:"", blog_country_name:"", blog_city:"", userName:"", hotel_name:"",
+        hotel_link:"", rest_name:"", rest_link:"", attract_name:"", attract_link:""}})
         } 
     
     showBlogFormClicked = () =>{
@@ -90,6 +90,8 @@ class GetBlogs extends Component{
 
     cancelClicked = () =>{
         this.setState({showForm: false})
+        this.setState({blog_text:"", blog_country_name:"", blog_city:"", user_id:0, hotel_name:"",
+        hotel_link:"", rest_name:"", rest_link:"", attract_name:"", attract_link:""})
     }
 
     render(){
@@ -106,7 +108,7 @@ class GetBlogs extends Component{
                                     <option value="0">Select a traveller below</option>
                                         { 
                                             this.state.users.map((element, index)=>{
-                                                return <option key={index} value={element.user_id}>{element.userName} 
+                                                return <option key={index} value={element.userName}>{element.userName} 
                                                     </option>
                                             })
                                         }
