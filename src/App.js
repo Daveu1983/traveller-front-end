@@ -26,8 +26,8 @@ class App extends Component {
   filterBlogCountry = () =>{
     let bloggedAboutCountries = []
     this.state.blogs.forEach((element) =>{
-      if(bloggedAboutCountries.indexOf(element.blog_country_name) === -1){
-        bloggedAboutCountries.push(element.blog_country_name)
+      if(bloggedAboutCountries.indexOf(element.country) === -1){
+        bloggedAboutCountries.push(element.country)
       }
     });
     this.setState({countriesAvailableToSelect: bloggedAboutCountries, filterOn: true})
@@ -168,11 +168,9 @@ class App extends Component {
   }
 
   filterBlog = (country) =>{
-    axios.get(`http://localhost:8080/blogs/${country}`)
+    axios.get(`http://localhost:8080/blogs/search/findByCountry?country=${country}`)
     .then((response) => {
-      let sortedBlogs = response.data.blogs;
-      sortedBlogs.sort((a, b) => parseFloat(b.blog_id) - parseFloat(a.blog_id));
-      this.setState({blogs:sortedBlogs, filteredCountry:country})
+      this.setState({blogs:response.data._embedded.blogs, filteredCountry:country})
     })
     .catch(function (error) {
         console.log(error);
