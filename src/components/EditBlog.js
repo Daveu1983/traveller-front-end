@@ -23,7 +23,7 @@ componentWillMount(){
             blogId:this.props.blog_id,
             blogPost:this.props.blog_text,
             country:this.props.blog_country_name,
-            city:this.blog_city,
+            city:this.props.blog_city,
             resteraunt:this.props.rest_name,
             resterauntLink:this.props.rest_link,
             hotel:this.props.hotel_name,
