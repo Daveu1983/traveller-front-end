@@ -74,15 +74,22 @@ class GetBlogs extends Component{
         }
 
     addBlogClicked = () => {
-        this.props.addBlogFunction(this.state.user_id, this.state.blog_country_name,
+        if ((this.state.userName === undefined) || (this.state.userName === "0")){
+            alert("select  user");
+          }
+        if ((this.state.blog_country_name === undefined) || (this.state.blog_country_name === "Select the blog country")) {
+            alert("select  country");
+        }else{
+            this.props.addBlogFunction(this.state.userName, this.state.blog_country_name,
                                    this.state.blog_city, this.state.blog_text,
                                    this.state.hotel_name,this.state.hotel_link,
                                    this.state.rest_name,this.state.rest_link,
                                    this.state.attract_name,this.state.attract_link);
-        this.setState({showForm:false})
-        this.setState({blog:{blog_text:"", blog_country_name:"", blog_city:"", userName:"", hotel_name:"",
-        hotel_link:"", rest_name:"", rest_link:"", attract_name:"", attract_link:""}})
-        } 
+            this.setState({showForm:false})
+            this.setState({blog:{blog_text:"", blog_country_name:"", blog_city:"", userName:"", hotel_name:"",
+            hotel_link:"", rest_name:"", rest_link:"", attract_name:"", attract_link:""}})
+        }
+    } 
     
     showBlogFormClicked = () =>{
         this.setState({showForm: true})

@@ -68,44 +68,37 @@ class App extends Component {
   } 
 
   addBlog = (userName, blogCountryName, blogCity, blogText, hotelName, hotelLink, restName, restLink, attractName, attractLink)=>{
-    if ((userName === undefined) || (userName === "0")){
-      alert("select  user");
-    }
-    if ((blogCountryName === undefined) || (blogCountryName === "Select the blog country")) {
-      alert("select  country");
-    }else{
-      blogCity = this.defaultValuesForForm(blogCity)
-      blogText = this.defaultValuesForForm(blogText)
-      hotelName = this.defaultValuesForForm(hotelName)
-      hotelLink = this.defaultValuesForForm(hotelLink)
-      restName = this.defaultValuesForForm(restName)
-      restLink = this.defaultValuesForForm(restLink)
-      attractName = this.defaultValuesForForm(attractName)
-      attractLink = this.defaultValuesForForm(attractLink)
-      blogText =  this.checkSwears(blogText);
-      axios.post('http://localhost:8080/blogs/',{
-      blogPost:blogText,      
-      country:blogCountryName,
-      city:blogCity,
-      hotel:hotelName,
-      hotelLink:hotelLink,
-      resteraunt:restName,
-      resterauntLink:restLink,
-      attraction:attractName,
-      attractionLink:attractLink,  
-      userName:userName
-     })
-    .then(() => {
-      if(this.state.filterOn){
-        this.filterBlog(this.state.filteredCountry)
-      }else{
-        this.getBlogs();
-      }
+    blogCity = this.defaultValuesForForm(blogCity)
+    blogText = this.defaultValuesForForm(blogText)
+    hotelName = this.defaultValuesForForm(hotelName)
+    hotelLink = this.defaultValuesForForm(hotelLink)
+    restName = this.defaultValuesForForm(restName)
+    restLink = this.defaultValuesForForm(restLink)
+    attractName = this.defaultValuesForForm(attractName)
+    attractLink = this.defaultValuesForForm(attractLink)
+    blogText =  this.checkSwears(blogText);
+    axios.post('http://localhost:8080/blogs/',{
+    blogPost:blogText,      
+    country:blogCountryName,
+    city:blogCity,
+    hotel:hotelName,
+    hotelLink:hotelLink,
+    resteraunt:restName,
+    resterauntLink:restLink,
+    attraction:attractName,
+    attractionLink:attractLink,  
+    userName:userName
     })
-    .catch(function (error) {
-      console.log(error);
-    });
+  .then(() => {
+    if(this.state.filterOn){
+      this.filterBlog(this.state.filteredCountry)
+    }else{
+      this.getBlogs();
     }
+    })
+  .catch(function (error) {
+    console.log(error);
+    });    
   }
 
   deleteBlog = (blogId) => {
