@@ -210,10 +210,10 @@ class App extends Component {
           {
             this.state.blogs.map((element, index) => {
               if (this.state.isABlogInEditing) {
-                if (this.state.blogIdInEditing === element.blog_id) {
+                if (this.state.blogIdInEditing === element._links.self.href) {
                   return <EditBlog
                     key={index}
-                    blog_id={element.blog_id}
+                    blog_id={element._links.self.href}
                     user_id={element.user_id}
                     user_name={element.userName}
                     blog_country_name={element.country}

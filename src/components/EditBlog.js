@@ -6,7 +6,7 @@ const countryList = require('country-list');
 class EditBlogs extends Component{
 
 state = {
-    blog:{blog_id:0, blogPost:"", country:"", city:"", hotel:"", hotelLink:"", 
+    blog:{blogId:0, blogPost:"", country:"", city:"", hotel:"", hotelLink:"", 
     resteaunt:"", resterauntLink:"", attraction:"", attractionLink:""},
     users:[],
     countries:[]
@@ -20,6 +20,7 @@ componentWillMount(){
 
     blogToEdit() {
         this.setState({
+            blogId:this.props.blogId,
             blogPost:this.props.blogPost,
             country:this.props.country,
             city:this.city,
