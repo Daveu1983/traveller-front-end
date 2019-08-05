@@ -69,8 +69,8 @@ class App extends Component {
       }
   } 
 
-  addBlog = (userId, blogCountryName, blogCity, blogText, hotelName, hotelLink, restName, restLink, attractName, attractLink)=>{
-    if ((userId === undefined) || (userId === "0")){
+  addBlog = (userName, blogCountryName, blogCity, blogText, hotelName, hotelLink, restName, restLink, attractName, attractLink)=>{
+    if ((userName === undefined) || (userName === "0")){
       alert("select  user");
     }
     if ((blogCountryName === undefined) || (blogCountryName === "Select the blog country")) {
@@ -86,16 +86,15 @@ class App extends Component {
       attractLink = this.defaultValuesForForm(attractLink)
       blogText =  this.checkSwears(blogText);
       axios.post('http://localhost:8080/blogs/',{
-      blog_text:blogText,      
-      blog_country_name:blogCountryName,
-      blog_city:blogCity,
-      user_id:parseInt(userId),
-      hotel_name:hotelName,
-      hotel_link:hotelLink,
-      rest_name:restName,
-      rest_link:restLink,
-      attract_name:attractName,
-      attract_link:attractLink  
+      blogPost:blogText,      
+      country:blogCountryName,
+      city:blogCity,
+      hotel:hotelName,
+      hotelLink:hotelLink,
+      resteraunt:restName,
+      resterauntLink:restLink,
+      attraction:attractName,
+      attractionLink:attractLink  
      })
     .then(() => {
       if(this.state.filterOn){
@@ -132,7 +131,7 @@ class App extends Component {
     }
   }
 
-  saveChanges = (blogId, blogCountryName, blogCity, blogText, restName, restLink, hotelName, hotelLink, attractName, attractLink) =>{
+  saveChanges = (blogId, blogCountryName, blogCity, blogText, restName, restLink, hotelName, hotelLink, attractName, attractLink, userName) =>{
     if ((blogCountryName === undefined)){
       alert("select  country");
     }else{
@@ -144,10 +143,11 @@ class App extends Component {
       city:blogCity, 
       resteraunt:restName,
       resterauntLink:restLink,
-      hotelName:hotelName,
+      hotel:hotelName,
       hotelLink:hotelLink,
       attraction:attractName,
-      attractionLink:attractLink
+      attractionLink:attractLink,
+      userName:userName
      })
     .then(() => {
       if(this.state.filterOn){

@@ -7,7 +7,7 @@ class EditBlogs extends Component{
 
 state = {
     blog:{blogId:0, blogPost:"", country:"", city:"", hotel:"", hotelLink:"", 
-    resteaunt:"", resterauntLink:"", attraction:"", attractionLink:""},
+    resteaunt:"", resterauntLink:"", attraction:"", attractionLink:"", userName:""},
     users:[],
     countries:[]
 }
@@ -24,12 +24,13 @@ componentWillMount(){
             blogPost:this.props.blog_text,
             country:this.props.blog_country_name,
             city:this.blog_city,
-            resteraunt:this.props.rest,
+            resteraunt:this.props.rest_name,
             resterauntLink:this.props.rest_link,
-            hotel:this.props.hotel,
+            hotel:this.props.hotel_name,
             hotelLink:this.props.hotel_link,
-            attraction:this.props.attract,
-            attractionLink:this.props.attract_link
+            attraction:this.props.attract_name,
+            attractionLink:this.props.attract_link,
+            userName:this.props.user_name
         })
     }
 
@@ -89,7 +90,7 @@ componentWillMount(){
                                    this.state.city, this.state.blogPost, this.state.resteraunt,
                                    this.state.resterauntLink, this.state.hotel,
                                    this.state.hotelLink, this.state.attraction,
-                                   this.state.attractionLink);
+                                   this.state.attractionLink, this.state.userName);
         } 
 
     discardChangeClicked = () =>{
