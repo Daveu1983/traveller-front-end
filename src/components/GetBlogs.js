@@ -80,6 +80,8 @@ class GetBlogs extends Component{
                                    this.state.rest_name,this.state.rest_link,
                                    this.state.attract_name,this.state.attract_link);
         this.setState({showForm:false})
+        this.setState({blog_text:"", blog_country_name:"", blog_city:"", user_id:0, hotel_name:"",
+        hotel_link:"", rest_name:"", rest_link:"", attract_name:"", attract_link:""})
         } 
     
     showBlogFormClicked = () =>{

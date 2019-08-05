@@ -59,7 +59,7 @@ class App extends Component {
   }
 
   defaultValuesForForm = (element) =>{
-      if (element === undefined){
+      if ((element === undefined)|| (element === "")){
         element = "nothing yet entered"
         return element
       }else{
@@ -68,7 +68,7 @@ class App extends Component {
   } 
 
   addBlog = (userName, blogCountryName, blogCity, blogText, hotelName, hotelLink, restName, restLink, attractName, attractLink)=>{
-    if ((userName === undefined) || (userName === "0")){
+    if ((userName === undefined) || (userName === 0)){
       alert("select  user");
     }
     if ((blogCountryName === undefined) || (blogCountryName === "Select the blog country")) {
